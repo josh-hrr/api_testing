@@ -20,7 +20,7 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Run Postman Tests
-        run: newman run api_testing/Regression_Suite_API/Regression_Suite_API.postman_collection.json --environment=DEV_Environment/DEV_Env.postman_environment.json --reporters cli,htmlextra
+        run: newman run Regression_Suite_API/Regression_Suite_API.postman_collection.json --environment=DEV_Environment/DEV_Env.postman_environment.json --reporters cli,htmlextra
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v2
