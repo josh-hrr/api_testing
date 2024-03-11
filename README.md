@@ -25,7 +25,8 @@ This Postman collection contains tests for a series of API endpoints related to 
 
 #### Run Tests with GitHub Actions:
 
-You can also execute the tests using GitHub Actions. The workflow is triggered automatically on every push to the main branch, or you can trigger it manually from the GitHub Actions UI.
+- You can also execute the tests using GitHub Actions. The workflow is triggered automatically on every push to the main branch, or you can trigger it manually from the GitHub Actions UI.
+- There is a report save as an artifact everytime a workflow job is executed.
 
 ### Collection Overview
 
