@@ -1,14 +1,16 @@
-# API Collection README
+## API Collection README
 
 This Postman collection contains tests for a series of API endpoints related to user registration and authentication.
 
-## How to Use
+### How to Use
+
+#### Run Tests Locally:
 
 1. **Install Postman:**
    - Make sure you have Postman installed on your machine. You can download it from [here](https://www.postman.com/downloads/).
 
 2. **Import Collection:**
-   - Download the JSON file for this collection e.g. "Regression_Suite_API".
+   - Download the JSON file for this collection (e.g., "Regression_Suite_API").
    - Open Postman and click on the "Import" button in the top left corner.
    - Select the downloaded JSON file to import the collection into Postman.
 
@@ -21,9 +23,13 @@ This Postman collection contains tests for a series of API endpoints related to 
    - Run the requests one by one or run the entire collection.
    - Monitor the test results in the "Tests" tab of each request.
 
-## Collection Overview
+#### Run Tests with GitHub Actions:
 
-### Register - Successful
+You can also execute the tests using GitHub Actions. The workflow is triggered automatically on every push to the main branch, or you can trigger it manually from the GitHub Actions UI.
+
+### Collection Overview
+
+#### Register - Successful
 - **Method:** POST
 - **URL:** https://reqres.in/api/register
 - **Purpose:** Registers a user with the provided email and password.
@@ -32,8 +38,7 @@ This Postman collection contains tests for a series of API endpoints related to 
   - Checks the data type of each response property.
   - Validates that the response status code is 200 (OK).
 
-
-### Get User Registered
+#### Get User Registered
 - **Method:** GET
 - **URL:** https://reqres.in/api/users/4
 - **Purpose:** Retrieves information about a registered user.
@@ -41,7 +46,7 @@ This Postman collection contains tests for a series of API endpoints related to 
   - Verifies that the response contains the ID and email of the previously registered user.
   - Validates that the response status code is 200 (OK).
 
-### Login - Successful
+#### Login - Successful
 - **Method:** POST
 - **URL:** https://reqres.in/api/login
 - **Purpose:** Logs in a user with the provided email and password.
@@ -49,12 +54,13 @@ This Postman collection contains tests for a series of API endpoints related to 
   - Verifies that the response contains the token previously registered.
   - Validates that the response status code is 200 (OK).
 
-## Authorization
-- The collection uses API key authentication. The API key is included in the collection variables.
+### Authorization
+The collection uses API key authentication. The API key is included in the collection variables.
 
-## Environment Variables
+### Environment Variables
 - `idRetrieved`: Holds the ID of the registered user.
 - `tokenRetrieved`: Holds the token retrieved after successful registration.
 
-## API Reference
-- https://reqres.in/
+### API Reference
+For more details about the API, please refer to the [ReqRes API documentation](https://reqres.in/).
+
