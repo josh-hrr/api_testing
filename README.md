@@ -30,6 +30,8 @@ This Postman collection contains tests for a series of API endpoints related to 
 - **Tests:**
   - Verifies that the response properties and values match the API documentation.
   - Checks the data type of each response property.
+  - Validates that the response status code is 200 (OK).
+
 
 ### Get User Registered
 - **Method:** GET
@@ -37,6 +39,7 @@ This Postman collection contains tests for a series of API endpoints related to 
 - **Purpose:** Retrieves information about a registered user.
 - **Tests:**
   - Verifies that the response contains the ID and email of the previously registered user.
+  - Validates that the response status code is 200 (OK).
 
 ### Login - Successful
 - **Method:** POST
@@ -44,6 +47,7 @@ This Postman collection contains tests for a series of API endpoints related to 
 - **Purpose:** Logs in a user with the provided email and password.
 - **Tests:**
   - Verifies that the response contains the token previously registered.
+  - Validates that the response status code is 200 (OK).
 
 ## Authorization
 - The collection uses API key authentication. The API key is included in the collection variables.
