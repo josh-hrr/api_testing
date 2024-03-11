@@ -8,7 +8,7 @@ This Postman collection contains tests for a series of API endpoints related to 
    - Make sure you have Postman installed on your machine. You can download it from [here](https://www.postman.com/downloads/).
 
 2. **Import Collection:**
-   - Download the JSON file for this collection.
+   - Download the JSON file for this collection e.g. "Regression_Suite_API".
    - Open Postman and click on the "Import" button in the top left corner.
    - Select the downloaded JSON file to import the collection into Postman.
 
@@ -51,3 +51,6 @@ This Postman collection contains tests for a series of API endpoints related to 
 ## Environment Variables
 - `idRetrieved`: Holds the ID of the registered user.
 - `tokenRetrieved`: Holds the token retrieved after successful registration.
+
+## API Reference
+- https://reqres.in/
