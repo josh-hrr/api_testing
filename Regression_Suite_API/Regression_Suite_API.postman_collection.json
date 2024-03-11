@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "bcd5e3fe-73d6-4a9b-8aa1-b4c4d74a09c3",
+		"name": "Regression_Suite_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11217675",
+		"_collection_link": "https://orange-desert-759474.postman.co/workspace/E2E-flows~c67b1876-234f-43b0-a785-4ac758016c88/collection/11217675-bcd5e3fe-73d6-4a9b-8aa1-b4c4d74a09c3?action=share&source=collection_link&creator=11217675"
+	},
+	"item": [
+		{
+			"name": "Register - Successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json = pm.response.json(); \r",
+							"pm.collectionVariables.set(\"idRetrieved\", json.id);\r",
+							"pm.collectionVariables.set(\"tokenRetrieved\", json.token);\r",
+							"\r",
+							"testData = {\r",
+							"    \"id\": 4,\r",
+							"    \"token\": \"QpwL5tke4Pnpja7X4\"\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response status code should be 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response properties and values should be as per api documentation\", () => {\r",
+							"    pm.expect(json).to.have.property(\"id\", testData.id);\r",
+							"    pm.expect(json).to.have.property(\"token\", testData.token);\r",
+							"});\r",
+							" \r",
+							"for (let key in json) {\r",
+							"    if (json.hasOwnProperty(key)) {\r",
+							"        pm.test(`Response property ${key} should have the correct type`, () => {\r",
+							"            switch (key) {\r",
+							"                case 'id':\r",
+							"                    pm.expect(json[key]).to.be.a('number');\r",
+							"                    break;\r",
+							"                case 'token':\r",
+							"                    pm.expect(json[key]).to.be.a('string');\r",
+							"                    break;\r",
+							"                default: \r",
+							"                    break;\r",
+							"            }\r",
+							"        });\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json = pm.response.json();\r",
+							"const emailRegistered = pm.environment.get(\"email\");\r",
+							"const idRegistered = pm.collectionVariables.get(\"idRetrieved\");\r",
+							"const tokenRetrieved = pm.collectionVariables.get(\"tokenRetrieved\");\r",
+							"\r",
+							"pm.test(\"Response status code should be 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"response properties should be id and email previously registered\", () => {\r",
+							"    pm.expect(json.data.id).to.eql(idRegistered);\r",
+							"    pm.expect(json.data.email).to.eql(emailRegistered);\r",
+							"    console.log(\"tokenRetrieved: \", tokenRetrieved);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json = pm.response.json();\r",
+							"const tokenRetrieved = pm.collectionVariables.get(\"tokenRetrieved\");\r",
+							"\r",
+							"pm.test(\"Response status code should be 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response property should contain token previously registered\", () => {\r",
+							"    pm.expect(json.token).to.eql(tokenRetrieved);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "VIwSoRMBLerTQs292zjOuLDszqfYubcxdxTFOE84",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "VIwSoRMBLerTQs292zjOuLDszqfYubcxdxTFOE84",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "idRetrieved",
+			"value": ""
+		},
+		{
+			"key": "tokenRetrieved",
+			"value": ""
+		}
+	]
+}
